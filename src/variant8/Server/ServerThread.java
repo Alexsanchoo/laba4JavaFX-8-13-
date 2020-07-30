@@ -17,7 +17,7 @@ public class ServerThread implements Runnable {
     private ResultSet resultSet = null;
     private String username = "root";
     private String password = "root";
-    private String URL = "jdbc:mysql://localhost:3306/technics?serverTimezone=Europe/Moscow";
+    private String URL = "jdbc:mysql://localhost:3306/?serverTimezone=Europe/Moscow";
 
 
 
@@ -35,8 +35,8 @@ public class ServerThread implements Runnable {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL, username, password);
             statement = connection.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS technics");
-            statement.executeUpdate("USE technics");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS technics;");
+            statement.executeUpdate("USE technics;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS military(\n" +
                     "id MEDIUMINT NOT NULL AUTO_INCREMENT,\n" +
                     "category ENUM('воздушная', 'сухопутная', 'водная') NOT NULL,\n" +
